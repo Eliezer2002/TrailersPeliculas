@@ -1,0 +1,367 @@
+<head>
+    <style>
+        h3 {
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+            margin-top: 15px;
+
+        }
+
+        p {
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+        .car-card {
+
+            width: 400px;
+
+            object-fit: cover;
+
+            padding: 10px;
+
+            height: 600px;
+
+            border-color: transparent;
+
+        }
+
+
+
+        .car-image {
+
+            background-image: url(img/play1.png);
+
+            width: 100%;
+
+            height: 230px;
+
+            border-radius: 5%;
+
+        }
+
+
+
+        #fila {
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            margin: 0;
+
+
+
+        }
+
+
+
+        .boton-volver {
+
+            padding: 10px 20px;
+
+            background-color: #fff;
+
+            color: #333;
+
+            border: 2px solid #333;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition: background-color 0.3s, color 0.3s;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+
+
+        .boton-volver:hover {
+
+            background-color: #333;
+
+            color: #fff;
+
+        }
+
+
+
+
+
+        .boton-editar {
+
+            width: 60px;
+
+            height: 60px;
+
+            padding: 5px 5px;
+
+            background-color: green;
+
+            color: white;
+
+            border: 2px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: bolder;
+
+            transition: background-color 0.3s, color 0.3s;
+
+            font-family: 'Segoe UI';
+
+        }
+
+
+
+
+
+
+
+        .boton-editar:hover {
+
+            background-color: #808080;
+
+            color: rgb(201, 194, 194);
+
+            border: 2px solid #333;
+
+        }
+
+
+
+
+
+
+
+        .boton-eliminar {
+
+            padding: 5px 5px;
+
+            width: 60px;
+
+            height: 60px;
+
+            color: white;
+
+            border: 2px;
+
+            background-color: red;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 12px;
+
+            transition: background-color 0.3s, color 0.3s;
+
+            font-family: 'Segoe UI';
+
+        }
+
+
+
+        .boton-ver {
+
+            position: absolute;
+
+            bottom: 4em;
+
+            right: 4em;
+
+            padding: 5px 5px;
+
+            width: 150px;
+
+            height: 150px;
+
+            border: 2px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            font-size: 12px;
+
+            transition: background-color 0.3s, color 0.3s;
+
+            font-family: 'Segoe UI';
+
+        }
+
+
+
+        .boton-ver {
+
+            display: inline-block;
+
+
+
+        }
+
+
+
+        .boton-ver {
+
+            position: relative;
+
+            bottom: 10em;
+
+            right: -2em;
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+        .boton-eliminar:hover {
+
+            background-color: gray;
+
+            color: #fff;
+
+            border: 2px;
+
+        }
+
+
+
+        .boton-cargarimg {
+
+            padding: 10px 20px;
+
+            background-color: #fff;
+
+            color: #0026ff;
+
+            border: 2px solid #333;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition: background-color 0.3s, color 0.3s;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+
+
+        .boton-cargarimg:hover {
+
+            background-color: #0026ff;
+
+            color: #fff;
+
+        }
+
+        .imagen-destacada {
+            padding: 0%;
+            margin: auto;
+            transition: transform 0.3s, filter 0.3s;
+            width: 197px;
+            height: auto;
+            overflow: hidden;
+
+        }
+
+        .imagen-destacada:hover {
+            transform: scale(1.8);
+            filter: brightness(140%);
+        }
+        .car-card img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgb(0, 0, 0, 0.2);
+            background-color: rgba(85, 88, 88, 0.171);
+            filter: brightness(120%);
+        }
+    </style>
+    <link rel="stylesheet" href="/css/estiloPortalTrailers.css">
+</head>
+
+{{#isAdmin user}}
+<div style="display:flex">
+    <form action="/trailers/add" style="text-align:start; margin-left: 20px">
+        <button type="submit" class="btn btn-outline-primary">Nuevo</button>
+    </form>
+    <form action="/trailers/search" method="GET" class="ms-auto" style="margin-right: 35px">
+        <select class="form-select" name="Categoria" style="width: 300px;" aria-label="Default select example">
+            <option value="">Buscar por categoría</option>
+            <option value="Accion">Acción</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Terror">Terror</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Ciencia Ficción">Ciencia Ficción</option>
+            <option value="Drama">Drama</option>
+            <option value="Romance">Romance</option>
+            <option value="Fantasia">Fantasia</option>
+        </select>
+        <div style="display:grid;">
+            <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+        </div>
+    </form>
+
+</div>
+
+
+<div class="row row-cols-5 row-cols-lg-3">
+    {{#each trailers}}
+    <div class="col" id="fila">
+        <div class="card car-card">
+            <form method="GET" action="/infoTrailers/{{_id}}">
+                <img style="cursor: pointer;" src="{{ImgUrl}}" class="car-image">
+                <button style="margin: 10px; " class="btn btn-primary btn-sm" type="submit">ver trailer</button>
+            </form>
+            <h3>{{Titulo}}</h3>
+
+            <div class="btn-group" style="display:flex;">
+                <form action="/trailers/edit/{{_id}}" method="GET">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary boton-editar"
+                        value="Editar">Edit</button>
+                </form>
+                <form method="POST" action="/trailers/delete/{{_id}}?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary boton-eliminar"
+                        value="Borrar">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="row">
+    {{#each trailers}}
+    <div class="card" style="width: 22rem; margin: 30px">
+        <img class="card-img-top mt-3" src="{{ImgUrl}}" alt="Card image cap">
+        <div class="card-body">
+            <h4>{{Titulo}}</h4>
+            <p class="card-text">{{Reseña}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/isAdmin}}
